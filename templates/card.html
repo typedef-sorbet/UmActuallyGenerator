@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        .bg {
+            display: flex;
+            flex-direction: column;
+            background: lightgreen;
+            width: 600px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-family: sans-serif;
+        }
+
+        .title {
+            position: fixed;
+
+            font-size: larger;
+
+            transform: skew(-30deg);
+
+            background: #383838;
+            color: #E2EE6B;
+            font-weight: bolder;
+            padding-left: 30px;
+            padding-right: 25px;
+            left: -6px;
+            top: 20px;
+        }
+
+        .title p {
+            transform: skew(30deg);
+            line-height: 0px;
+        }
+
+        .category {
+            position: fixed;
+
+            font-size: small;
+
+            transform: skew(-30deg);
+
+            background: #383838;
+            color: #E2EE6B;
+            font-weight: bolder;
+
+            padding-left: 15px;
+            padding-right: 1500px;
+            left: 500px;
+            top: 30px;
+        }
+
+        .category p {
+            transform: skew(30deg);
+            line-height: 0px;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .flex-content {
+            flex: 1;
+        }
+
+        .maintext {
+            border-radius: 20px;
+            border-color: #E4EA6D;
+            border-width: 2px;
+            border-style: solid;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            line-height: 22px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            background: white;
+        }
+
+        .statement {
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .correction {
+            border-radius: 20px;
+            background: #40A340;
+            color: white;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .details {
+            color: #58c158;
+            padding-left: 20px;
+            padding-top: 5px;
+            font-size: small;
+        }
+
+        mark {
+            background: #FCEB6A;
+            /* line-height: 30px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="flex-container maintext">
+            <section class="flex-content statement">
+                {% autoescape false %}
+                {{ data.statement  | replace("[","<mark>") | replace("]","</mark>") }}
+                {% endautoescape %}
+            </section>
+
+            <section class="flex-content correction">
+                {{ data.correction }}
+            </section>
+
+            <section class="flex-content details">
+                {{ data.details }}
+            </section>
+        </div>
+
+        <div class="title">
+            <p>{{ data.title | upper }}</p>
+        </div>
+
+        <div class="category">
+            <p>{{ data.category | upper }}</p>
+        </div>
+    </div>
+</body>
