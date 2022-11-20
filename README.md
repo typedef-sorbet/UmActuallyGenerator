@@ -2,6 +2,9 @@
 
 UmActuallyGenerator allows the creation of custom "Um, Actually"-eqsue question cards from JSON data.
 
+## Requirements
+
+wkhtmltopdf
 
 ## Usage
 
