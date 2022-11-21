@@ -6,7 +6,7 @@ import random               # For filenames
 
 from PIL import Image, ImageChops                                       # For image processing
 from jinja2 import Environment, FileSystemLoader, select_autoescape     # For templating HTML
-from os.path import exists                                              # For filesystem stuff
+from os.path import exists, abspath                                     # For filesystem stuff
 from os import mkdir                                                    # ^^^^^^^^^^^^^^^^^^^
 
 jinja_env = Environment(
@@ -17,7 +17,8 @@ jinja_env = Environment(
 # Don't crop vertically; trim() needs to be able to grab whitespace from (0,0)
 imgkit_opts = {
     "crop-x": 10,
-    "crop-w": 628
+    "crop-w": 628,
+    "enable-local-file-access": None
 }
 
 # Trims bordering pixels from the image; border color inferred from top-left pixel
@@ -93,7 +94,7 @@ def main():
     for dikt in template_data:
         # Render HTML viewport, with some extra whitespace
         rand = random.randint(10000, 99999)
-        imgkit.from_string(template.render(data=dikt), f"out/{dikt['title'].replace(' ', '_')}_{rand}.png", options=imgkit_opts)
+        imgkit.from_string(template.render(data=dikt, bg_path=abspath("templates/card_bg.svg")), f"out/{dikt['title'].replace(' ', '_')}_{rand}.png", options=imgkit_opts)
 
         # Trim aforementioned whitespace so the image doesn't look terrible
         im = Image.open(f"out/{dikt['title'].replace(' ', '_')}_{rand}.png")
