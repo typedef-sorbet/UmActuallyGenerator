@@ -48,7 +48,7 @@ def from_stdin():
     return [{
         "title": input("Title of the property in question: "),
         "category": input("Category of the property in question (e..g. 'Horror', 'Anime', etc.): "),
-        "statement": input("Statement (Place the incorrect part of the statement in square brackets, [like this])"),
+        "statement": input("Statement (Place the incorrect part of the statement in square brackets, [like this]): "),
         "correction": input("Correction: "),
         "details": input("Additional details: ")
     }], None
