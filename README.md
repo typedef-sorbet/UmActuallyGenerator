@@ -2,6 +2,8 @@
 
 UmActuallyGenerator allows the creation of custom "Um, Actually"-eqsue question cards from JSON data.
 
+![Here's an example.](https://raw.githubusercontent.com/typedef-sorbet/UmActuallyGenerator/master/examples/example_1.png)
+
 ## Requirements
 
 wkhtmltopdf
